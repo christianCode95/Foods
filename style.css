@@ -1,0 +1,272 @@
+:root {
+  --bg: #f5f0e6;           /* bege claro neutro */
+  --text: #3a3a3a;         /* cinza escuro para texto */
+  --card: #ffffff;         /* branco para cards */
+  --primary: #b22222;      /* vermelho tijolo (tom quente, mas menos vibrante) */
+  --primary-light: #e57373; /* vermelho claro suave */
+  --shadow: rgba(0, 0, 0, 0.15);
+}
+
+body.dark {
+  --bg: #2c2c2c;           /* cinza escuro */
+  --text: #dddcdc;         /* off-white */
+  --card: #3c3c3c;         /* cinza médio para cards */
+  --primary: #b22222;
+  --primary-light: #e57373;
+  --shadow: rgba(0, 0, 0, 0.6);
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: background-color 0.5s ease, color 0.5s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+header {
+  background: var(--primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 30px;
+  position: relative;
+  box-shadow: 0 4px 8px var(--shadow);
+  font-weight: 700;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-family: 'Noto Serif SC', serif;
+}
+header img{
+    width: 150px;
+}
+
+.menu-toggle {
+  font-size: 32px;
+  cursor: pointer;
+  display: none;
+  user-select: none;
+}
+
+#toggleTheme {
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+#toggleTheme:hover {
+  transform: rotate(20deg);
+}
+
+nav {
+  background: var(--card);
+  padding: 15px 0;
+  box-shadow: 0 2px 6px var(--shadow);
+  transition: background-color 0.5s ease;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 40px;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 960px;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: 0.7px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: var(--text);
+  padding: 10px 15px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-weight: 700;
+}
+
+nav ul li a:hover,
+nav ul li a:focus {
+  background: var(--primary-light);
+  color: #fff;
+  box-shadow: 0 0 8px var(--primary-light);
+}
+
+main {
+  padding: 40px 20px;
+  max-width: 960px;
+  margin: 0 auto;
+  
+}
+
+.cardapio-section {
+  margin-bottom: 50px;
+}
+
+.cardapio-section h2 {
+  margin-bottom: 25px;
+  color: var(--primary);
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 3px var(--primary-light);
+  border-bottom: 3px solid var(--primary-light);
+  padding-bottom: 8px;
+  font-family: 'Noto Serif SC', serif;
+}
+
+.item {
+  background: var(--card);
+  padding: 20px 25px;
+  margin-bottom: 15px;
+  border-radius: 15px;
+  box-shadow: 0 6px 12px var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px var(--primary-light);
+}
+
+.item h3 {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--primary);
+  font-family: 'Noto Serif SC', serif;
+}
+
+.item p {
+  margin: 5px 0 0 0;
+  font-size: 1rem;
+  color: #555555;
+  flex-grow: 1;
+  margin-left: 20px;
+}
+
+.item span {
+  font-weight: 900;
+  font-size: 1.3rem;
+  color: var(--primary);
+  min-width: 80px;
+  text-align: right;
+  font-family: 'Noto Serif SC', serif;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+    color: var(--primary);
+  }
+
+  nav {
+    display: none;
+  }
+
+  nav.active {
+    display: block;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .item p {
+    margin-left: 0;
+    margin-top: 8px;
+  }
+
+  .item span {
+    margin-top: 10px;
+    text-align: left;
+    width: 100%;
+  }
+}
+
+/* Scroll suave para âncoras */
+html {
+  scroll-behavior: smooth;
+}
+
+.cart {
+  position: fixed;
+  right: 20px;
+  top: 80px;
+  width: 280px;
+  background: var(--card);
+  border-radius: 12px;
+  padding: 15px 20px;
+  box-shadow: 0 6px 15px var(--shadow);
+  color: var(--text);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: none; /* invisível inicialmente */
+  z-index: 999;
+}
+
+.cart h3 {
+  margin-top: 0;
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+#cartItems {
+  list-style: none;
+  max-height: 250px;
+  overflow-y: auto;
+  padding: 0;
+  margin: 15px 0;
+}
+
+#cartItems li {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid #ccc;
+  font-weight: 600;
+}
+
+#cartTotal {
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-align: right;
+  margin-bottom: 15px;
+  color: var(--primary);
+}
+
+#checkoutBtn {
+  width: 100%;
+  padding: 10px 0;
+  background-color: var(--primary);
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#checkoutBtn:hover {
+  background-color: var(--primary-light);
+}
